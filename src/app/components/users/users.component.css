@@ -1,0 +1,12 @@
+#noUsers {
+  background-color: brown;
+}
+
+.white-text {
+  color: white;
+}
+
+.float-right {
+  float: right;
+  cursor: pointer;
+}

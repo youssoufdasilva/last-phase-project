@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "last-phase-project": {
+      "hosting": {
+        "last-phase-project": [
+          "last-phase-project"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "last-phase-project"
+  }
+}

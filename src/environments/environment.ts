@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: " AIzaSyA08waoYXMF-k-Or8NcjVoDsU4O1t6dTws ",
+    authDomain: "last-phase-project.firebaseapp.com",
+    databaseURL: "https://last-phase-project.firebaseio.com",
+    projectId: "last-phase-project",
+    storageBucket: "last-phase-project.appspot.com",
+    messagingSenderId: "945654053249"
+  }
 };
 
 /*
@@ -14,3 +22,18 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+//FROM FIREBASE
+/*
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.11.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.11.0/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+*/
+
+//npm install -g firebase-tools

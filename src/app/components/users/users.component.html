@@ -1,0 +1,80 @@
+<div
+  *ngIf="users?.length > 0; else noUsers"
+  class="clr-row clr-justify-content-center"
+>
+  <ul *ngFor="let user of users" class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+    <li class="card">
+      <div class="card-block">
+        <div class="card-title">
+          {{ user.username }}
+          <span *ngIf="user.isActive" class="label label-success">Enabled</span>
+          <span *ngIf="!user.isActive" class="label label-danger"
+            >Disabled</span
+          >
+        </div>
+        <div class="card-text">
+          {{ user.createdAt.toDate() | date: "dd/MM/yyyy h:mm:ss a" }}
+          <clr-icon
+            *ngIf="!(editState && userToEdit.id == user.id) || false"
+            (click)="editUser($event, user)"
+            shape="pencil"
+            class="is-solid float-right"
+          ></clr-icon>
+
+          <clr-icon
+            *ngIf="editState && userToEdit.id == user.id"
+            (click)="clearState()"
+            shape="collapse-card"
+            dir="down"
+            size="20"
+            class="is-solid float-right"
+          ></clr-icon>
+        </div>
+      </div>
+      <!-- edit area -->
+      <div
+        *ngIf="editState && userToEdit.id == user.id"
+        class="card-footer clr-row clr-justify-content-start"
+      >
+        <form (ngSubmit)="updateUser(user)">
+          <input
+            clrInput
+            placeholder="New Username"
+            [(ngModel)]="user.username"
+            name="Username"
+          />
+          <br />
+          <input type="submit" value="Edit" class="btn btn-primary" />
+
+          <button
+            *ngIf="user.isActive"
+            (click)="toggleUserActivity(user)"
+            class="btn btn-warning"
+          >
+            Disable
+          </button>
+          <button
+            *ngIf="!user.isActive"
+            (click)="toggleUserActivity(user)"
+            class="btn btn-success"
+          >
+            Enable
+          </button>
+          <button (click)="deleteUser($event, user)" class="btn btn-danger">
+            Remove
+          </button>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noUsers>
+  <div id="noUsers">
+    <hr />
+    <h5 class="white-text text-center">
+      There are no users to list...
+      <a href="#" (onClick)="refresh()">Refresh</a>
+    </h5>
+  </div>
+</ng-template>
